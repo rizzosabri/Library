@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -37,8 +38,13 @@ public class LibraryController {
         return libraryService.delete(id);
     }
 
-    @PutMapping("/api/library/{id}")
+    /* @PutMapping("/api/library/{id}")
     public Library updateLibrary(@PathVariable("id") Long id, @RequestBody Library request) {
         return libraryService.updateLibrary(id, request);
+    }*/
+
+    @PatchMapping("/api/library/{id}")
+    public Library updateLibrary(@PathVariable("id") Long id, @RequestBody Map<String, Object> updates) {
+        return libraryService.updateLibrary(id, (Map<String, Object>) updates);
     }
 }
