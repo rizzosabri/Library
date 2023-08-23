@@ -90,4 +90,13 @@ public class LibraryService {
 
         return libraryRepository.save(existingLibrary);
     }
+    @Transactional
+    public void softDelete(Long id) {
+        Library library = libraryRepository.findById(id).orElse(null);
+        if (library != null) {
+            library.setDeleted(true);
+            libraryRepository.save(library);
+        }
+    }
 }
+

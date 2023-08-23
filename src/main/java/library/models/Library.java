@@ -22,7 +22,8 @@ public class Library {
     private String phone;
     @Column(name="address")
     private String address;
-
+    @Column(name="vigente")
+    private boolean deleted = false;
 
 
     }

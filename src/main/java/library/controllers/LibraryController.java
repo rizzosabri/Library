@@ -33,9 +33,13 @@ public class LibraryController {
         return libraryService.get(id);
     }
 
-    @DeleteMapping ("/api/library/{id}")
+    /*@DeleteMapping ("/api/library/{id}")
     public Library delete(@PathVariable("id") Long id) {
         return libraryService.delete(id);
+    }*/
+    @DeleteMapping("/api/library/{id}")
+    public void softDeleteLibrary(@PathVariable("id") Long id) {
+        libraryService.softDelete(id);
     }
 
     /* @PutMapping("/api/library/{id}")
@@ -44,6 +48,7 @@ public class LibraryController {
     }*/
 
     @PatchMapping("/api/library/{id}")
+    // actualizar datos específicos de la biblioteca
     public Library updateLibrary(@PathVariable("id") Long id, @RequestBody Map<String, Object> updates) {
         return libraryService.updateLibrary(id, (Map<String, Object>) updates);
     }
